@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Edukate - Online Education Website Template</title>
+    <title>Dashboard | Smart Mobility Compass </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -19,7 +19,43 @@
 
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 </head>
+<style>
+    @media print {
+  /* 1. Cacher tout le "décor" du site */
+  .container-fluid.bg-dark,     /* barre du haut + footer + copyright */
+  nav, .navbar,
+  .back-to-top,
+  .modal,
+  form,                          /* boutons Supprimer + fenêtres Modifier/Ajouter */
+  [data-toggle="modal"],         /* boutons Modifier (crayon) + Ajouter une section */
+  #btn-download-report,          /* le bouton de téléchargement lui-même */
+  .card-header {                 /* le bouton "En savoir plus sur ce rapport" */
+    display: none !important;
+  }
 
+  /* 2. IMPORTANT : forcer l'affichage des descriptions (fermées par défaut) */
+  .collapse {
+    display: block !important;
+    height: auto !important;
+    visibility: visible !important;
+  }
+
+  /* 3. Une section = une page complète, sans coupure */
+  [id^="section-"] {
+    page-break-after: always;
+    page-break-inside: avoid;
+    background: #fff !important;
+    padding: 15px 0 !important;
+  }
+
+  /* 4. Hauteur des figures Power BI pour qu'elles ne soient pas coupées */
+  iframe {
+    width: 100% !important;
+    height: 520px !important;
+    border: none !important;
+  }
+}
+</style>
 <body>
     <!-- Topbar Start -->
     <div class="container-fluid bg-dark">
@@ -60,7 +96,6 @@
                     <a href="{{ url_for('satisfaction_ri') }}" class="nav-item nav-link">Satisfaction Globale</a>
                     <a href="{{ url_for('amelioration_ri') }}" class="nav-item nav-link ">Axes d’Amélioration</a>
                 </div>
-                <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Join Us</a>
             </div>
         </nav>
     </div>
@@ -235,24 +270,21 @@
         ➕ Ajouter une nouvelle section
     </button>
 
-    <a
-        href="{{ url_for('download_all_reports') }}"
-        class="btn"
-        style="
-            background: linear-gradient(135deg, #36A9E1, #2498d3);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 12px;
-            font-weight: 600;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-        ">
-        ⬇ Télécharger tous les rapports (PDF)
-    </a>
+    <button id="btn-download-report" onclick="window.print()" class="btn" style="
+        background: linear-gradient(135deg, #36A9E1, #2498d3);
+        color: white;
+        padding: 12px 25px;
+        border-radius: 12px;
+        font-weight: 600;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        
+    ">
+    ⬇ Télécharger tous les rapports (PDF)
+</button>
 </div>
 <div class="modal fade" id="addSectionModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
@@ -312,26 +344,16 @@
                    <a href="index.html" class="navbar-brand">
                         <img src="img/Logo Esiea Baseline ingenieur - blanc.png" alt="Logo ESIEA" style="height:100px;">
                   </a>
-                    <p class="m-0">Accusam nonumy clita sed rebum kasd eirmod elitr. Ipsum ea lorem at et diam est, tempor rebum ipsum sit ea tempor stet et consetetur dolores. Justo stet diam ipsum lorem vero clita diam</p>
+                    <p class="m-0">ESIEA, école d’ingénieurs spécialisée dans le numérique, forme des experts capables de relever les défis technologiques d’aujourd’hui et de demain, notamment dans les domaines de l’intelligence artificielle, de la data science et de la cybersécurité.</p>
                 </div>
-                <div class="col-md-6 mb-5">
-                    <h3 class="text-white mb-4">Newsletter</h3>
-                    <div class="w-100">
-                        <div class="input-group">
-                            <input type="text" class="form-control border-light" style="padding: 30px;" placeholder="Your Email Address">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary px-4">Sign Up</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <div class="row">
                 <div class="col-md-4 mb-5">
-                    <h3 class="text-white mb-4">Get In Touch</h3>
-                    <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                    <h3 class="text-white mb-4">Contactez-nous</h3>
+                    <p><i class="fa fa-map-marker-alt mr-2"></i>Laval, France</p>
+                    <p><i class="fa fa-phone-alt mr-2"></i>02 43 59 24 24</p>
+                    <p><i class="fa fa-envelope mr-2"></i>relations-internationales@esiea.fr</p>
                     <div class="d-flex justify-content-start mt-4">
                         <a class="text-white mr-4" href="#"><i class="fab fa-2x fa-twitter"></i></a>
                         <a class="text-white mr-4" href="#"><i class="fab fa-2x fa-facebook-f"></i></a>
