@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <header>
+                <h1>Log In</h1>
+                <p>Welcome back, please enter details</p>
+            </header>
+            <form id="loginForm" method="POST" novalidate>
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                    <div id="invalid-user" class="error" aria-live="polite"></div>
+                </div>
+
+                <div class="form-field">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" autocomplete="off">
+                    <a href="#" class="forgot-pass">Forgot Password?</a>
+                    <div id="invalid-pass" class="error" aria-live="polite"></div>
+                </div>
+                
+                <footer>
+                    <button class="footer-log-in-btn" id="submitBtn">Log In</button>
+                    <div class="no-account">
+                        <p>Don't have an account?</p>
+                        <a href="regis.html">Register</a>
+                    </div>
+                    <div class="continue-with">Or Continue With</div>
+                    <div class="socials">
+                        <a class="socials-img" href="#"><img src="./assets/Google.png" alt="Google"></a>
+                        <a class="socials-img" href="#"><img src="./assets/Github.png" alt="GitHub"></a>
+                        <a class="socials-img" href="#"><img src="./assets/Facebook.png" alt="Facebook"></a>
+                    </div>
+                </footer>
+            </form>
+        </div>
+        <div class="right">
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>
